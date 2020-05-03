@@ -3,7 +3,10 @@ from flask import Flask
 from flask import render_template
 from flask import request, redirect
 from flask import flash, url_for
+from flask import jsonify
 import json
+
+import file_mgr
 
 UPLOAD_FOLDER = 'static/uploads/'
 
@@ -21,14 +24,32 @@ def allowed_file(filename):
 def hello_world():
 	return render_template('index.html')
 
+@app.route('/list')
+def list_photos():
+	return render_template('index.html')
+
 @app.route("/arqui")
 def hello():
     return "Hello Arqui! This page is just for you!"
+
+@app.route("/stat")
+def stat():
+	photo_dict = file_mgr.stat()
+	return jsonify(photo_dict)
 
 #@app.route("/<name>")
 #def hello_name(name):
 #    return "Hello " + name
     
+'''	
+	data = {
+		"count": 0,
+		"index": 0
+	}
+	with open("stat.json", "w") as write_file: 
+		json.dump(data, write_file)
+'''
+
 
 @app.route('/upload', methods=['POST'])
 def upload_image():
@@ -41,6 +62,7 @@ def upload_image():
 		return redirect('/')
 	if file and allowed_file(file.filename):
 		file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+		file_mgr.add_photo(file.filename)
 		#flash('Image successfully uploaded and displayed')
 		#return render_template('index.html', filename=file.filename)
 		return redirect('/display/'+file.filename)
@@ -64,4 +86,4 @@ def signup():
     return redirect('/')
 
 if __name__ == '__main__':
-	app.run(port=5002,debug=False)
+	app.run(port=5000,debug=False)
