@@ -50,3 +50,20 @@ def add_photo(filepath):
             json.dump(photo_dict, old_file_hdl, indent = 4)
 
 #add_photo("newfile")
+
+import random
+def get_a_random_photo() :
+
+    json_file = "photos.json"
+    with open(json_file, "r") as file_hdl:
+        photo_dict = json.load(file_hdl)
+        print("photo_dict:\n", photo_dict)
+        photo_list = photo_dict["photos"] 
+        print("photo_list_len:\n", len(photo_list))
+        photo_count = photo_dict["photo_count"]
+        print("photo_count: ", photo_count)
+        random_index = random.randint(0,photo_count)
+        print("random_index: ", random_index)
+        random_photo_dict = photo_list[random_index]
+        return(random_photo_dict["filepath"])
+        

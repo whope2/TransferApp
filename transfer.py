@@ -28,18 +28,28 @@ def hello_world():
 def list_photos():
 	return render_template('index.html')
 
-@app.route("/arqui")
-def hello():
-    return "Hello Arqui! This page is just for you!"
+@app.route("/<name>")
+def hello_name(name):
+    return "Hello " + name
 
 @app.route("/stat")
 def stat():
 	photo_dict = file_mgr.stat()
 	return jsonify(photo_dict)
 
-#@app.route("/<name>")
-#def hello_name(name):
-#    return "Hello " + name
+@app.route("/pictureoftheday")
+def pictureoftheday():
+	photo_path = file_mgr.get_a_random_photo()
+	#print('display_image filename: ' + filename)
+	return redirect(url_for('static', filename='uploads/' + photo_path), code=301)
+
+@app.after_request
+def add_header(response):
+	response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate" # HTTP 1.1.
+	response.headers["Pragma"] = "no-cache" # HTTP 1.0.
+	response.headers["Expires"] = "0" # Proxies.	
+	return response
+
     
 '''	
 	data = {
