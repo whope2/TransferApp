@@ -62,7 +62,7 @@ def get_a_random_photo() :
         print("photo_list_len:\n", len(photo_list))
         photo_count = photo_dict["photo_count"]
         print("photo_count: ", photo_count)
-        random_index = random.randint(0,photo_count)
+        random_index = random.randint(0,photo_count-1)
         print("random_index: ", random_index)
         random_photo_dict = photo_list[random_index]
         return(random_photo_dict["filepath"])
