@@ -50,16 +50,15 @@ def add_header(response):
 	response.headers["Expires"] = "0" # Proxies.	
 	return response
 
-    
-'''	
-	data = {
-		"count": 0,
-		"index": 0
-	}
-	with open("stat.json", "w") as write_file: 
-		json.dump(data, write_file)
-'''
-
+@app.route('/quote', methods=['POST'])
+def upload_quote():
+	quote_text = request.form['QuoteText']
+	print(quote_text)
+	quote_author = request.form['QuoteAuthor']
+	print(quote_author)
+	file_mgr.upload_a_quote(quote_text, quote_author)
+	flash("New quote: " + quote_text + "  By " + quote_author)
+	return redirect('/')
 
 @app.route('/upload', methods=['POST'])
 def upload_image():

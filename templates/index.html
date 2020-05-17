@@ -54,7 +54,12 @@
   /* Style the content */
   .content {
     background-color: #ddd;
-    font-size: 8vw;
+    font-size: 4vw;
+    padding:2vw;
+  }
+  .content2 {
+    background-color: rgb(227, 232, 233);
+    font-size: 4vw;
     padding:2vw;
   }
 
@@ -94,10 +99,22 @@
 
   <div id="main-div" class="content">
     <form action="/upload" method="post" enctype="multipart/form-data">
+      <label for="filename">Upload a Photo</label>&nbsp;&nbsp;
       <input type="file" name="file"/>
       <input type="submit" value="Transfer"/>
-    </form> 
+    </form>       
   </div>
+  <div class="content2">
+    <form action="/quote" method="post" enctype="multipart/form-data">
+      <label for="quotename">Quote</label>
+      <textarea rows = "3" cols = "40" name = "QuoteText">...
+     </textarea><br>
+      <label for="aname">Author</label>
+      <input type="text" id="fname" name="QuoteAuthor" value="...">&nbsp;
+      <input type="submit" value="upload_quote">
+    </form>         
+  </div>
+
 
 <div class="footer">
   <p>

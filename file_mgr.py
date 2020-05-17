@@ -49,7 +49,6 @@ def add_photo(filepath):
             print(photo_dict)
             json.dump(photo_dict, old_file_hdl, indent = 4)
 
-#add_photo("newfile")
 
 import random
 def get_a_random_photo() :
@@ -66,4 +65,26 @@ def get_a_random_photo() :
         print("random_index: ", random_index)
         random_photo_dict = photo_list[random_index]
         return(random_photo_dict["filepath"])
-        
+
+
+def upload_a_quote(text, author):
+
+    #quote_data is a dict
+    #quote_list is an array
+    quote_list = []
+    quote_file = "quotes.json"
+
+    with open(quote_file, "r+") as file_hdl:
+        print("operate on %s" % (quote_file))
+        quote_dict = json.load(file_hdl)
+        print("quote_dict:\n", quote_dict)
+        quote_list = quote_dict["quotes"] 
+        print("quote_list_len:\n", len(quote_list))
+        quote_count = quote_dict["quote_count"]
+        print("quote_count: ", quote_count)
+        entry_new = {'index':quote_count,'text':text,'author':author}
+        quote_list.append(entry_new)
+        quote_dict["quote_count"] = quote_count+1
+        print(quote_dict)
+        file_hdl.seek(0)
+        json.dump(quote_dict, file_hdl, indent = 4)

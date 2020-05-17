@@ -1,0 +1,30 @@
+{
+    "quote_count": 5,
+    "quotes": [
+        {
+            "index": 0,
+            "text": "You get what you give.",
+            "author": "Jennifer Lopez"
+        },
+        {
+            "index": 1,
+            "text": "Learn from yesterday. Live for today. Hope for tomorrow.",
+            "author": "Unknown author"
+        },
+        {
+            "index": 2,
+            "text": "Once you choose hope, anything is possible.\r\n     ",
+            "author": "Christopher Reeve"
+        },
+        {
+            "index": 3,
+            "text": "I\u2019d rather regret the things I\u2019ve done than regret the things I haven\u2019t done.",
+            "author": "Lucille Ball"
+        },
+        {
+            "index": 4,
+            "text": "Done is better than perfect.",
+            "author": "Sheryl Sandberg"
+        }
+    ]
+}
