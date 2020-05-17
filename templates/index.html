@@ -32,7 +32,7 @@
   .topnav {
     overflow: hidden;
     background-color: #333;
-    font-size: 4vw;
+    font-size: 3vw;
   }
 
   /* Style the topnav links */
@@ -95,13 +95,14 @@
     &nbsp;&nbsp;&nbsp;&nbsp;
     <a href="/stat">Stat</a>
     <a href="/pictureoftheday">Picture of The Day</a>
+    <a href="/quoteoftheday">Quote of The Day</a>
   </div>
 
   <div id="main-div" class="content">
     <form action="/upload" method="post" enctype="multipart/form-data">
       <label for="filename">Upload a Photo</label>&nbsp;&nbsp;
       <input type="file" name="file"/>
-      <input type="submit" value="Transfer"/>
+      <input type="submit" value="Upload a Photo"/>
     </form>       
   </div>
   <div class="content2">
@@ -111,7 +112,7 @@
      </textarea><br>
       <label for="aname">Author</label>
       <input type="text" id="fname" name="QuoteAuthor" value="...">&nbsp;
-      <input type="submit" value="upload_quote">
+      <input type="submit" value="Upload a Quote">
     </form>         
   </div>
 

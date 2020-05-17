@@ -9,11 +9,19 @@ def stat():
         new_file = "photos2.json"
     else:
         new_file = "photos.json"
+    
+    file2 = "quotes.json"
 
     with open(new_file, "r") as new_file_hdl:
         print("stat on %s" % (new_file))
         photo_dict = json.load(new_file_hdl)
-        return photo_dict
+
+    with open(file2, "r") as file2_hdl:
+        print("stat on %s" % (file2))
+        dict2 = json.load(file2_hdl)
+    
+    dict2.update(photo_dict)
+    return(dict2)
 
 def add_photo(filepath):
 
@@ -65,6 +73,19 @@ def get_a_random_photo() :
         print("random_index: ", random_index)
         random_photo_dict = photo_list[random_index]
         return(random_photo_dict["filepath"])
+
+def get_a_random_quote() :
+
+    json_file = "quotes.json"
+    with open(json_file, "r") as file_hdl:
+        quote_dict = json.load(file_hdl)
+        quote_list = quote_dict["quotes"] 
+        print("quote_list_len:\n", len(quote_list))
+        quote_count = quote_dict["quote_count"]
+        random_index = random.randint(0,quote_count-1)
+        print("random_index: ", random_index)
+        random_dict = quote_list[random_index]
+        return(random_dict["text"] + "  By " + random_dict["author"])
 
 
 def upload_a_quote(text, author):

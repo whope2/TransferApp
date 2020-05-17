@@ -43,6 +43,12 @@ def pictureoftheday():
 	#print('display_image filename: ' + filename)
 	return redirect(url_for('static', filename='uploads/' + photo_path), code=301)
 
+@app.route("/quoteoftheday")
+def quoteoftheday():
+	random_quote = file_mgr.get_a_random_quote()
+	print(random_quote)
+	return "Quote of The Day: " + random_quote
+
 @app.after_request
 def add_header(response):
 	response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate" # HTTP 1.1.
