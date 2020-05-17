@@ -2,14 +2,17 @@
 
 Try my TransferApp hosted on a AWS EC2 instance:
 
-Transfer a photo:
+Transfer a photo or Upload a quote:
 http://52.54.114.11
 
-View the history of transfers:
+View the history of transfers and uploaded quotes:
 http://52.54.114.11/stat
 
 View Picture of The Day:
 http://52.54.114.11/pictureoftheday
+
+View Quote of The Day:
+http://52.54.114.11/quoteoftheday
 
 TransferApp implements a web service using Python/Flask framework, hosted on an EC2 instance on AWS. Two json files are implemented as database at backend to store new transfer activities.
 
