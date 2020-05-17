@@ -57,6 +57,9 @@ def add_photo(filepath):
             print(photo_dict)
             json.dump(photo_dict, old_file_hdl, indent = 4)
 
+    #backup the file
+    cp_cmd = 'cp "%s" "%s"' % (old_file, "photos_backup.json")
+    os.system(cp_cmd)
 
 import random
 def get_a_random_photo() :
@@ -94,6 +97,7 @@ def upload_a_quote(text, author):
     #quote_list is an array
     quote_list = []
     quote_file = "quotes.json"
+    quote_backup_file = "quotes_backup.json"
 
     with open(quote_file, "r+") as file_hdl:
         print("operate on %s" % (quote_file))
@@ -109,3 +113,7 @@ def upload_a_quote(text, author):
         print(quote_dict)
         file_hdl.seek(0)
         json.dump(quote_dict, file_hdl, indent = 4)
+
+    #backup the file
+    cp_cmd = 'cp "%s" "%s"' % (quote_file, quote_backup_file)
+    os.system(cp_cmd)
