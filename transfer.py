@@ -23,14 +23,11 @@ def allowed_file(filename):
 @app.route('/')
 def hello_world():
 	return render_template('index.html')
-
-@app.route('/list')
-def list_photos():
-	return render_template('index.html')
-
+	
 @app.route("/<name>")
 def hello_name(name):
-    return "Hello " + name
+    #return "Hello " + name
+	return render_template('echo.html', text=name)
 
 @app.route("/stat")
 def stat():
@@ -47,7 +44,8 @@ def pictureoftheday():
 def quoteoftheday():
 	random_quote = file_mgr.get_a_random_quote()
 	print(random_quote)
-	return "Quote of The Day: " + random_quote
+	#return "Quote of The Day: " + random_quote
+	return render_template('echo.html', text="Quote of The Day: " + random_quote)
 
 @app.after_request
 def add_header(response):
