@@ -47,6 +47,13 @@ def quoteoftheday():
 	#return "Quote of The Day: " + random_quote
 	return render_template('echo.html', text="Quote of The Day: " + random_quote)
 
+@app.route("/wordoftheday")
+def wordoftheday():
+	random_word = file_mgr.get_a_random_word()
+	print(random_word)
+	#return "Word of The Day: " + random_word
+	return render_template('echo.html', text="Word of The Day: " + random_word)
+
 @app.after_request
 def add_header(response):
 	response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate" # HTTP 1.1.
@@ -62,6 +69,18 @@ def upload_quote():
 	print(quote_author)
 	file_mgr.upload_a_quote(quote_text, quote_author)
 	flash("New quote: " + quote_text + "  By " + quote_author)
+	return redirect('/')
+
+@app.route('/word', methods=['POST'])
+def upload_word():
+	word_text = request.form['WordText']
+	print(word_text)
+	word_def = request.form['WordDefinition']
+	print(word_def)
+	word_sents = request.form['WordSentences']
+	print(word_sents)	
+	file_mgr.upload_a_word(word_text, word_def, word_sents)
+	flash("New word: " + word_text + ": " + word_def + ".  " + word_sents)
 	return redirect('/')
 
 @app.route('/upload', methods=['POST'])

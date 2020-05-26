@@ -11,6 +11,7 @@ def stat():
         new_file = "photos.json"
     
     file2 = "quotes.json"
+    file3 = "words.json"
 
     with open(new_file, "r") as new_file_hdl:
         print("stat on %s" % (new_file))
@@ -19,9 +20,14 @@ def stat():
     with open(file2, "r") as file2_hdl:
         print("stat on %s" % (file2))
         dict2 = json.load(file2_hdl)
-    
+
+    with open(file3, "r") as file3_hdl:
+        print("stat on %s" % (file3))
+        dict3 = json.load(file3_hdl)
+
     dict2.update(photo_dict)
-    return(dict2)
+    dict3.update(dict2)
+    return(dict3)
 
 def add_photo(filepath):
 
@@ -91,6 +97,19 @@ def get_a_random_quote() :
         return(random_dict["text"] + "  By " + random_dict["author"])
 
 
+def get_a_random_word() :
+
+    json_file = "words.json"
+    with open(json_file, "r") as file_hdl:
+        word_dict = json.load(file_hdl)
+        word_list = word_dict["words"] 
+        print("word_list_len:\n", len(word_list))
+        word_count = word_dict["word_count"]
+        random_index = random.randint(0,word_count-1)
+        print("random_index: ", random_index)
+        random_dict = word_list[random_index]
+        return(random_dict["word"] + ": " + random_dict["definition"] + ".  " + random_dict["sentences"])
+
 def upload_a_quote(text, author):
 
     #quote_data is a dict
@@ -116,4 +135,33 @@ def upload_a_quote(text, author):
 
     #backup the file
     cp_cmd = 'cp "%s" "%s"' % (quote_file, quote_backup_file)
+    os.system(cp_cmd)
+
+
+
+def upload_a_word(word, definition, sentences):
+
+    #quote_data is a dict
+    #quote_list is an array
+    word_list = []
+    word_file = "words.json"
+    word_backup_file = "words_backup.json"
+
+    with open(word_file, "r+") as file_hdl:
+        print("operate on %s" % (word_file))
+        word_dict = json.load(file_hdl)
+        print("word_dict:\n", word_dict)
+        word_list = word_dict["words"] 
+        print("word_list_len:\n", len(word_list))
+        word_count = word_dict["word_count"]
+        print("word_count: ", word_count)
+        entry_new = {'index':word_count,'word':word,'definition':definition,'sentences':sentences}
+        word_list.append(entry_new)
+        word_dict["word_count"] = word_count+1
+        print(word_dict)
+        file_hdl.seek(0)
+        json.dump(word_dict, file_hdl, indent = 4)
+
+    #backup the file
+    cp_cmd = 'cp "%s" "%s"' % (word_file, word_backup_file)
     os.system(cp_cmd)

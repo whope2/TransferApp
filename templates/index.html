@@ -62,6 +62,11 @@
     font-size: 4vw;
     padding:2vw;
   }
+  .content3 {
+    background-color: #ddd;
+    font-size: 3vw;
+    padding:2vw;
+  }
 
   /* Style the footer */
   .footer {
@@ -96,6 +101,7 @@
     <a href="/stat">Stat</a>
     <a href="/pictureoftheday">Picture of The Day</a>
     <a href="/quoteoftheday">Quote of The Day</a>
+    <a href="/wordoftheday">Word of The Day</a>
   </div>
 
   <div id="main-div" class="content">
@@ -115,8 +121,19 @@
       <input type="submit" value="Upload a Quote">
     </form>         
   </div>
-
-
+  <div class="content3">
+    <form action="/word" method="post" enctype="multipart/form-data">
+      <label>Word</label>
+      <input type="text" name="WordText" value="..."><br><br>
+      <label>Definition</label>
+      <textarea rows = "2" cols = "32" name = "WordDefinition">...
+      </textarea><br>
+      <label>Sample Sentences</label>
+      <textarea rows = "4" cols = "40" name = "WordSentences">...
+      </textarea><br>
+      <input type="submit" value="Upload a Word">
+    </form>         
+  </div>
 <div class="footer">
   <p>
     {% with messages = get_flashed_messages() %}
