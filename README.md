@@ -2,10 +2,10 @@
 
 Try my TransferApp hosted on a AWS EC2 instance:
 
-Transfer a photo or Upload a quote:
+Transfer a photo or Upload a quote or Upload a new word:
 http://52.54.114.11
 
-View the history of transfers and uploaded quotes:
+View the history of transfers and uploaded quotes and words:
 http://52.54.114.11/stat
 
 View Picture of The Day:
@@ -14,7 +14,10 @@ http://52.54.114.11/pictureoftheday
 View Quote of The Day:
 http://52.54.114.11/quoteoftheday
 
-TransferApp implements a web service using Python/Flask framework, hosted on an EC2 instance on AWS. Two json files are implemented as database at backend to store new photo transfer and quote update activities.
+View Word of The Day:
+http://52.54.114.11/wordoftheday
+
+TransferApp implements a web service using Python/Flask framework, hosted on an EC2 instance on AWS. Multiple json files are implemented as database at backend to store new photo transfer and quote and word update activities.
 
 Backend json files are automatically backed up after each transaction. 
 
