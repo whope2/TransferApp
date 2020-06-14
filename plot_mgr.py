@@ -1,3 +1,6 @@
+#import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg') #prevent 'no display error' while plotting on AWS EC2 isntance
 import matplotlib.pyplot as plt
 import file_mgr
 
@@ -16,4 +19,4 @@ def plot(x,y):
     return(plot_file)
 
 
-#plot("1.2,2,3,4","1.9,4,8,20")
+plot("1.2,2,3,4","1.9,4,8,20")
