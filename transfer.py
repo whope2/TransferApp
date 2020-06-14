@@ -7,6 +7,7 @@ from flask import jsonify
 import json
 
 import file_mgr
+import plot_mgr
 
 UPLOAD_FOLDER = 'static/uploads/'
 
@@ -82,6 +83,16 @@ def upload_word():
 	file_mgr.upload_a_word(word_text, word_def, word_sents)
 	flash("New word: " + word_text + ": " + word_def + ".  " + word_sents)
 	return redirect('/')
+
+@app.route('/plot', methods=['POST'])
+def plot():
+	x = request.form['xarray']
+	print(x)
+	y = request.form['yarray']
+	print(y)
+	plot_fname = plot_mgr.plot(x,y)
+	#flash("New word: " + word_text + ": " + word_def + ".  " + word_sents)
+	return redirect(plot_fname)
 
 @app.route('/upload', methods=['POST'])
 def upload_image():

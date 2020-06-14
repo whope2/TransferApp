@@ -165,3 +165,21 @@ def upload_a_word(word, definition, sentences):
     #backup the file
     cp_cmd = 'cp "%s" "%s"' % (word_file, word_backup_file)
     os.system(cp_cmd)
+
+def save_plot_data(x,y):
+
+    plot_file = "plot.json"
+    plot_backup_file = "plot_backup.json"
+
+    plot_dict = {
+        "x":x,
+        "y":y
+    }
+
+    with open(plot_file, "r+") as file_hdl:
+        print("operate on %s" % (plot_file))
+        json.dump(plot_dict, file_hdl, indent = 4)
+
+    #backup the file
+    cp_cmd = 'cp "%s" "%s"' % (plot_file, plot_backup_file)
+    os.system(cp_cmd)    
