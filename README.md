@@ -17,6 +17,8 @@ http://52.54.114.11/quoteoftheday
 View Word of The Day:
 http://52.54.114.11/wordoftheday
 
+Plot line graphs using Python matplotlib backend.
+
 TransferApp implements a web service using Python/Flask framework, hosted on an EC2 instance on AWS. Multiple json files are implemented as database at backend to store new photo transfer and quote and word update activities.
 
 Backend json files are automatically backed up after each transaction. 
