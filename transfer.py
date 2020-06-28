@@ -90,7 +90,12 @@ def plot():
 	print(x)
 	y = request.form['yarray']
 	print(y)
-	plot_fname = plot_mgr.plot(x,y)
+	#print(request.form['Yaccumulated'])
+	accu = False
+	if "Yaccumulated" in request.form:
+		if( request.form['Yaccumulated'] == 'on' ):
+			accu = True
+	plot_fname = plot_mgr.plot(x,y,accu)
 	#flash("New word: " + word_text + ": " + word_def + ".  " + word_sents)
 	return redirect(plot_fname)
 

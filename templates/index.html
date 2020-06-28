@@ -69,7 +69,7 @@
   }
   .content4 {
     background-color: rgb(227, 232, 233);
-    font-size: 4vw;
+    font-size: 3vw;
     padding:2vw;
   }
 
@@ -142,11 +142,13 @@
   <div class="content4">
     <form action="/plot" method="post" enctype="multipart/form-data">
       <label>x:</label>
-      <textarea rows = "2" cols = "48" name = "xarray">.,.,.
+      <textarea rows = "4" cols = "48" name = "xarray">.,.,.
       </textarea><br>
       <label>y:</label>
-      <textarea rows = "2" cols = "48" name = "yarray">.,.,.
+      <textarea rows = "4" cols = "48" name = "yarray">.,.,.
       </textarea><br>
+      <input type="checkbox" name="Yaccumulated">
+      <label>y accumulated</label><br>
       <input type="submit" value="Plot">
     </form>         
   </div>  
