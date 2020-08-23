@@ -84,6 +84,16 @@ def upload_word():
 	flash("New word: " + word_text + ": " + word_def + ".  " + word_sents)
 	return redirect('/')
 
+@app.route('/note', methods=['POST'])
+def upload_note():
+	note_label = request.form['NoteLabel']
+	print(note_label)
+	note_text = request.form['NoteText']
+	print(note_text)
+	file_mgr.upload_a_note(note_label, note_text)
+	flash("New Note: " + note_label + ": " + note_text)
+	return redirect('/')
+
 @app.route('/plot', methods=['POST'])
 def plot():
 	x = request.form['xarray']

@@ -12,6 +12,7 @@ def stat():
     
     file2 = "quotes.json"
     file3 = "words.json"
+    file4 = "notes.json"
 
     with open(new_file, "r") as new_file_hdl:
         print("stat on %s" % (new_file))
@@ -25,9 +26,14 @@ def stat():
         print("stat on %s" % (file3))
         dict3 = json.load(file3_hdl)
 
+    with open(file4, "r") as file4_hdl:
+        print("stat on %s" % (file4))
+        dict4 = json.load(file4_hdl)
+
     dict2.update(photo_dict)
     dict3.update(dict2)
-    return(dict3)
+    dict4.update(dict3)
+    return(dict4)
 
 def add_photo(filepath):
 
@@ -164,6 +170,32 @@ def upload_a_word(word, definition, sentences):
 
     #backup the file
     cp_cmd = 'cp "%s" "%s"' % (word_file, word_backup_file)
+    os.system(cp_cmd)
+
+
+def upload_a_note(label, text):
+
+    note_list = []
+    note_file = "notes.json"
+    note_backup_file = "notes_backup.json"
+
+    with open(note_file, "r+") as file_hdl:
+        print("operate on %s" % (note_file))
+        note_dict = json.load(file_hdl)
+        print("note_dict:\n", note_dict)
+        note_list = note_dict["notes"] 
+        print("note_list_len:\n", len(note_list))
+        note_count = note_dict["note_count"]
+        print("note_count: ", note_count)
+        entry_new = {'index':note_count,'label':label,'text':text}
+        note_list.append(entry_new)
+        note_dict["note_count"] = note_count+1
+        print(note_dict)
+        file_hdl.seek(0)
+        json.dump(note_dict, file_hdl, indent = 4)
+
+    #backup the file
+    cp_cmd = 'cp "%s" "%s"' % (note_file, note_backup_file)
     os.system(cp_cmd)
 
 def save_plot_data(x,y):
