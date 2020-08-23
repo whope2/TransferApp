@@ -2,10 +2,10 @@
 
 Try my TransferApp hosted on a AWS EC2 instance:
 
-Transfer a photo or Upload a quote or Upload a new word:
+Transfer a photo or Upload a quote or Upload a new word or submit a new note:
 http://52.54.114.11
 
-View the history of transfers and uploaded quotes and words:
+View the history of transfers and uploaded quotes, words, and notes:
 http://52.54.114.11/stat
 
 View Picture of The Day:
@@ -16,6 +16,9 @@ http://52.54.114.11/quoteoftheday
 
 View Word of The Day:
 http://52.54.114.11/wordoftheday
+
+View Notes:
+http://52.54.114.11/stat
 
 Plot line graphs using Python matplotlib backend. X axis supports both numeric and datetime data types. Y axis supports accumulated values.  
 
