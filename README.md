@@ -17,7 +17,7 @@ http://52.54.114.11/quoteoftheday
 View Word of The Day:
 http://52.54.114.11/wordoftheday
 
-Plot line graphs using Python matplotlib backend.
+Plot line graphs using Python matplotlib backend. X axis supports both numeric and datetime data types. Y axis supports accumulated values.  
 
 TransferApp implements a web service using Python/Flask framework, hosted on an EC2 instance on AWS. Multiple json files are implemented as database at backend to store new photo transfer and quote and word update activities.
 
